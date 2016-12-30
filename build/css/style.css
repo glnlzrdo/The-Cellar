@@ -255,7 +255,7 @@ h3 {
 }
 body {
   background: url("/.././img/cellar.jpg") center no-repeat;
-  background-size: 100%;
+  background-size: cover;
 }
 header.top {
   text-align: center;
@@ -332,9 +332,9 @@ header.top h3:after {
   display: flex;
   height: 90vh;
   max-width: 1500px;
-  width: 95vw;
-  margin: 0 10px;
-  margin-top: 8vh;
+  width: 90vw;
+  margin: 0 auto;
+  margin-top: 5vh;
   -webkit-perspective: 1000;
           perspective: 1000;
   -webkit-transform-style: preserve-3d;
@@ -391,13 +391,10 @@ label[for="fold"] {
   border: 2px solid #000;
   cursor: pointer;
   padding: 0.5rem 1rem;
+  display: none;
 }
 input#fold {
   display: none;
-}
-input#fold:checked + label {
-  background: #fff;
-  color: #000;
 }
 ul {
   list-style: none;
