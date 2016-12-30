@@ -1,14 +1,21 @@
 // Import all partials
 @require './_*.styl'
 
+body
+  background url('/.././img/cellar.jpg') center no-repeat;
+  background-size 100%
 
 header.top
   text-align center
+  background url('/.././img/wood-trans.png') center no-repeat;
+  background-size 100%
   h1
-    font-size 14.4rem
+    font-size 12.4rem
     line-height 0.7 // this font has a wacky baseline
     display flex
     justify-content: center;
+    color black
+    text-shadow 0px 0px 5px white
     
     // This is a bunch of goofy CSS to make the logo look decent
     .ofThe
@@ -31,7 +38,7 @@ header.top
     position relative
     display inline-block
     span
-      background white
+      //background white
       position relative
       z-index 2
       padding-left 1rem
@@ -51,23 +58,27 @@ header.top
       bottom 7px
       
   
-.catch-of-the-day
+.the-cellar
+  background url('/.././img/wood-trans.png') center no-repeat;
+  background-size 100%
   display flex
   height 90vh
   max-width:1500px
-  margin 0 auto
-  margin-top 5vh
+  width 95vw
+  margin 0 10px
+  margin-top 8vh
   perspective: 1000;
   transform-style preserve-3d
+  color white
   & > *
     flex 1 4 auto
     padding 2rem
-    border 1rem double lighten(black,10%)
+    border 0.7rem double lighten(saddlebrown ,10%)
     position relative
-    background white
+    //background white
     transition all 0.3s
     box-shadow 0px 5px 5px rgba(0,0,0,0.1)
-    overflow scroll
+    overflow hidden
     &:first-child
       flex-shrink 1 // take 4x the extra room
       flex-basis 50%
@@ -82,10 +93,12 @@ header.top
       flex-basis 50%
       transform translateX(-50%) rotateY(10deg) translateX(50%) scale(1.08) translateX(24px)
 
+
+
 // Folding Transforms
 // Take off folding when not checked
 input#fold:not(:checked) ~ #main
-  .catch-of-the-day > *
+  .the-cellar > *
       transform none
 
 label[for="fold"]
@@ -113,7 +126,7 @@ ul
 
 ul.order
   li
-    border-bottom 1px solid black
+    border-bottom 1px solid white
     padding 2rem 0
     display flex
     font-size 1.4rem
@@ -130,8 +143,8 @@ ul.order
       padding 0 
     &.total
       font-weight 600
-      border-bottom 3px solid black
-      border-top 3px double black
+      border-bottom 3px solid saddlebrown
+      border-top 3px double saddlebrown
     &.unavailable
       text-decoration line-through
       background lighten(red, 80%)
@@ -175,19 +188,21 @@ ul.order
   button
     width 100%
     border 0
-    
+
+.menu:hover, .order-wrap:hover, .inventory:hover
+  overflow scroll    
 
 // Menu Styles
 .list-of-liquor
-  border-top 2px solid black
-  border-bottom 1px solid black
+  border-top 2px solid saddlebrown
+  border-bottom 1px solid saddlebrown
   padding-top 5px
   margin-top 2rem
   transform translateZ(0);
 
 .menu-liquor
-  border-bottom 2px solid black
-  border-top 1px solid black
+  border-bottom 2px solid saddlebrown
+  border-top 1px solid saddlebrown
   padding-bottom 2rem
   padding-top 2rem
   margin-bottom 5px
@@ -221,6 +236,8 @@ button, input[type=submit]
   transition all 0.2s
   position relative
   z-index 2
+  background white
+
   &[disabled]
     color red
     background white

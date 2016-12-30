@@ -253,11 +253,17 @@ h2 {
 h3 {
   font-size: 3rem;
 }
+body {
+  background: url("/.././img/cellar.jpg") center no-repeat;
+  background-size: 100%;
+}
 header.top {
   text-align: center;
+  background: url("/.././img/wood-trans.png") center no-repeat;
+  background-size: 100%;
 }
 header.top h1 {
-  font-size: 14.4rem;
+  font-size: 12.4rem;
   line-height: 0.7;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -265,6 +271,8 @@ header.top h1 {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  color: #000;
+  text-shadow: 0px 0px 5px #fff;
 }
 header.top h1 .ofThe {
   display: -webkit-box;
@@ -295,7 +303,6 @@ header.top h3 {
   display: inline-block;
 }
 header.top h3 span {
-  background: #fff;
   position: relative;
   z-index: 2;
   padding-left: 1rem;
@@ -317,33 +324,36 @@ header.top h3:after {
   top: auto;
   bottom: 7px;
 }
-.catch-of-the-day {
+.the-cellar {
+  background: url("/.././img/wood-trans.png") center no-repeat;
+  background-size: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   height: 90vh;
   max-width: 1500px;
-  margin: 0 auto;
-  margin-top: 5vh;
+  width: 95vw;
+  margin: 0 10px;
+  margin-top: 8vh;
   -webkit-perspective: 1000;
           perspective: 1000;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
+  color: #fff;
 }
-.catch-of-the-day > * {
+.the-cellar > * {
   -webkit-box-flex: 1;
       -ms-flex: 1 4 auto;
           flex: 1 4 auto;
   padding: 2rem;
-  border: 1rem double #1a1a1a;
+  border: 0.7rem double #aa5417;
   position: relative;
-  background: #fff;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   box-shadow: 0px 5px 5px rgba(0,0,0,0.1);
-  overflow: scroll;
+  overflow: hidden;
 }
-.catch-of-the-day > *:first-child {
+.the-cellar > *:first-child {
   -ms-flex-negative: 1;
       flex-shrink: 1;
   -ms-flex-preferred-size: 50%;
@@ -351,14 +361,14 @@ header.top h3:after {
   -webkit-transform: translateX(50%) rotateY(6deg) translateX(-50%);
           transform: translateX(50%) rotateY(6deg) translateX(-50%);
 }
-.catch-of-the-day > *:nth-child(2) {
+.the-cellar > *:nth-child(2) {
   -webkit-transform: translateX(-50%) rotateY(-14deg) translateX(50%);
           transform: translateX(-50%) rotateY(-14deg) translateX(50%);
   border-left: 0;
   border-right: 0;
   min-width: 300px;
 }
-.catch-of-the-day > *:last-child {
+.the-cellar > *:last-child {
   -ms-flex-negative: 1;
       flex-shrink: 1;
   -ms-flex-preferred-size: 50%;
@@ -366,7 +376,7 @@ header.top h3:after {
   -webkit-transform: translateX(-50%) rotateY(10deg) translateX(50%) scale(1.08) translateX(24px);
           transform: translateX(-50%) rotateY(10deg) translateX(50%) scale(1.08) translateX(24px);
 }
-input#fold:not(:checked) ~ #main .catch-of-the-day > * {
+input#fold:not(:checked) ~ #main .the-cellar > * {
   -webkit-transform: none;
           transform: none;
 }
@@ -395,7 +405,7 @@ ul {
   padding: 0;
 }
 ul.order li {
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid #fff;
   padding: 2rem 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -419,8 +429,8 @@ ul.order li button {
 }
 ul.order li.total {
   font-weight: 600;
-  border-bottom: 3px solid #000;
-  border-top: 3px double #000;
+  border-bottom: 3px solid #8b4513;
+  border-top: 3px double #8b4513;
 }
 ul.order li.unavailable {
   text-decoration: line-through;
@@ -482,17 +492,22 @@ ul.order li span.count span {
   width: 100%;
   border: 0;
 }
+.menu:hover,
+.order-wrap:hover,
+.inventory:hover {
+  overflow: scroll;
+}
 .list-of-liquor {
-  border-top: 2px solid #000;
-  border-bottom: 1px solid #000;
+  border-top: 2px solid #8b4513;
+  border-bottom: 1px solid #8b4513;
   padding-top: 5px;
   margin-top: 2rem;
   -webkit-transform: translateZ(0);
           transform: translateZ(0);
 }
 .menu-liquor {
-  border-bottom: 2px solid #000;
-  border-top: 1px solid #000;
+  border-bottom: 2px solid #8b4513;
+  border-top: 1px solid #8b4513;
   padding-bottom: 2rem;
   padding-top: 2rem;
   margin-bottom: 5px;
@@ -538,6 +553,7 @@ input[type=submit] {
   transition: all 0.2s;
   position: relative;
   z-index: 2;
+  background: #fff;
 }
 button[disabled],
 input[type=submit][disabled] {

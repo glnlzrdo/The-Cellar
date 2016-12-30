@@ -85,9 +85,9 @@ var App = React.createClass({
   },
   render : function() {
     return (
-      <div className="catch-of-the-day">
+      <div className="the-cellar">
         <div className="menu">
-          <Header tagline="Dark, yet Shining" />
+          <Header tagline="Dark, Yet Glowing" />
           <ul className="list-of-liquors">
             {Object.keys(this.state.liquors).map(this.renderLiquor)}
           </ul>
@@ -276,7 +276,7 @@ var Inventory = React.createClass({
   },
   render : function() {
     return (
-      <div>
+      <div className="inventory">
         <h3>Inventory</h3>
         {Object.keys(this.props.liquors).map(this.renderInventory)}
         <AddLiquorForm {...this.props} />
