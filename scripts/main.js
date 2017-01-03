@@ -182,6 +182,9 @@ var Header = React.createClass({
         <h3 className="tagline"><span>{this.props.tagline}</span></h3> 
       </header>
     )
+  },  
+  propTypes : {
+    tagline : React.PropTypes.string.isRequired
   }
 })
 
@@ -250,6 +253,11 @@ var Barrel = React.createClass({
       </CSSTransitionGroup>
       </div>
     )
+  },
+  propTypes : {
+    liquors : React.PropTypes.object.isRequired,
+    order : React.PropTypes.object.isRequired,
+    removeFromBarrel : React.PropTypes.func.isRequired
   }
 })
 
@@ -284,6 +292,13 @@ var Inventory = React.createClass({
         <button onClick={this.props.loadSamples}>Load Sample Data</button>
       </div>      
     )
+  },
+  propTypes : {
+    addLiquor : React.PropTypes.func.isRequired,
+    loadSamples : React.PropTypes.func.isRequired,
+    liquors : React.PropTypes.object.isRequired,
+    linkState : React.PropTypes.func.isRequired,
+    removeLiquor : React.PropTypes.func.isRequired
   }
 })
 
