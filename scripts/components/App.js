@@ -94,7 +94,8 @@ var App = React.createClass({
           loadSamples={this.loadSamples} 
           liquors={this.state.liquors} 
           linkState={this.linkState} 
-          removeLiquor={this.removeLiquor}/>
+          removeLiquor={this.removeLiquor}
+          {...this.props}/>
       </div>
     )
   }

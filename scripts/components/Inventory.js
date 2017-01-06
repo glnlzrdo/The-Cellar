@@ -7,8 +7,22 @@ import React from 'react';
 
 import AddLiquorForm from './AddLiquorForm';
 import autobind from 'autobind-decorator';
-import Firebase from 'firebase';
-const ref = new Firebase('https://appdevbuddy.firebaseio.com/');
+import firebase from 'firebase';
+//const ref = new Firebase('https://appdevbuddy.firebaseio.com/');
+
+//import * as Firebase from 'firebase';
+
+  const config = {
+    apiKey: "AIzaSyDZLktimVqUi4isQ1HscEtwBssijbeMjDU",
+    authDomain: "appdevbuddy.firebaseapp.com",
+    databaseURL: "https://appdevbuddy.firebaseio.com",
+    storageBucket: "appdevbuddy.appspot.com",
+    messagingSenderId: "819744510003"
+  };
+  firebase.initializeApp(config);
+
+
+
 
 @autobind
 class Inventory extends React.Component {
@@ -21,15 +35,55 @@ class Inventory extends React.Component {
   }
 
   authenticate(provider) {
-    ref.authWithOAuthPopup(provider, this.authHandler)
+
+  	/* // Firebase sample auth popup
+	firebase.auth().signInWithPopup(provider).then(function(result) {
+	  // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+	  var token = result.credential.accessToken;
+	  // The signed-in user info.
+	  var user = result.user;
+	  // ...
+
+	  const storeRef = ref.child(this.props.params.storeId);
+
+	}).catch(function(error) {
+	  // Handle Errors here.
+	  var errorCode = error.code;
+	  var errorMessage = error.message;
+	  // The email of the user's account used.
+	  var email = error.email;
+	  // The firebase.auth.AuthCredential type that was used.
+	  var credential = error.credential;
+	  // ...
+	});
+  }
+  */
+
+  firebase.auth().signInWithPopup(provider)
+  	.then(this.authHandler)
+  	.catch(err => console.error(err));
   }
 
-  authHandler(err, authData) {
-    if(err) {
-      return;
-    }
+  authHandler(authData) {
+    const storeRef = firebase.database().ref('store/' + this.props.params.storeId);
+    storeRef.on('value', (snapshot) => {
+    	var data = snapshot.val() || {};
 
-    const storeRef = ref.child(this.props.params.storeId);
+   		//claim the store if no owner
+    	if (!data.owner) {
+    		storeRef.set({
+    			owner: authData.user.uid
+    		});
+    	}
+
+    	//update the state to reflect the current store owner and logged in user
+    	this.setState({
+    		uid : authData.user.uid,
+    		owner : data.owner || authData.user.uid
+    	});
+
+
+    });
   }
 
   renderLogin() {
@@ -37,9 +91,18 @@ class Inventory extends React.Component {
       <nav className="login">
         <h2>Inventory</h2>
         <p>Sign in to manage your store's Inventory</p>
-        <button className="github" onClick={this.authenticate.bind(this, 'github')}>Login using Github</button>
-        <button className="facebook" onClick={this.authenticate.bind(this, 'facebook')}>Login using Facebook</button>
-        <button className="twitter" onClick={this.authenticate.bind(this, 'twitter')}>Login using Twitter</button>
+        <button className="github"
+        onClick={this.authenticate.bind(this, new firebase.auth.GithubAuthProvider())}>
+        	Login using Github
+        </button>
+        <button className="facebook"
+        onClick={this.authenticate.bind(this, new firebase.auth.FacebookAuthProvider())}>
+        	Login using Facebook
+        </button>
+        <button className="twitter"
+        onClick={this.authenticate.bind(this, new firebase.auth.TwitterAuthProvider())}>
+        	Login using Twitter
+        </button>
       </nav>
     )
   }
